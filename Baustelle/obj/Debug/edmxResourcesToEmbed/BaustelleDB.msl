@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BaustelleDBModelStoreContainer" CdmEntityContainer="BaustelleDBEntities">
+    <EntitySetMapping Name="JedinicaMjereSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.JedinicaMjereSet">
+        <MappingFragment StoreEntitySet="JedinicaMjereSet">
+          <ScalarProperty Name="IdJedinicaMjere" ColumnName="IdJedinicaMjere" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="SkraceniNaziv" ColumnName="SkraceniNaziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlijentSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.KlijentSet">
+        <MappingFragment StoreEntitySet="KlijentSet">
+          <ScalarProperty Name="IdKlijent" ColumnName="IdKlijent" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterijalSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.MaterijalSet">
+        <MappingFragment StoreEntitySet="MaterijalSet">
+          <ScalarProperty Name="IdMaterijal" ColumnName="IdMaterijal" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+          <ScalarProperty Name="JedinicaMjereId" ColumnName="JedinicaMjereId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PonudaSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.PonudaSet">
+        <MappingFragment StoreEntitySet="PonudaSet">
+          <ScalarProperty Name="IdPonuda" ColumnName="IdPonuda" />
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="ZaposlenikId" ColumnName="ZaposlenikId" />
+          <ScalarProperty Name="DatumIzdavanja" ColumnName="DatumIzdavanja" />
+          <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StavkaPonudeSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.StavkaPonudeSet">
+        <MappingFragment StoreEntitySet="StavkaPonudeSet">
+          <ScalarProperty Name="IdStavkePonude" ColumnName="IdStavkePonude" />
+          <ScalarProperty Name="PonudaId" ColumnName="PonudaId" />
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StavkaUslugeSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.StavkaUslugeSet">
+        <MappingFragment StoreEntitySet="StavkaUslugeSet">
+          <ScalarProperty Name="IdStavkaUsluge" ColumnName="IdStavkaUsluge" />
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+          <ScalarProperty Name="MaterijalId" ColumnName="MaterijalId" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UlogaSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.UlogaSet">
+        <MappingFragment StoreEntitySet="UlogaSet">
+          <ScalarProperty Name="IdUloga" ColumnName="IdUloga" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UslugaSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.UslugaSet">
+        <MappingFragment StoreEntitySet="UslugaSet">
+          <ScalarProperty Name="IdUsluge" ColumnName="IdUsluge" />
+          <ScalarProperty Name="ZaposlenikId" ColumnName="ZaposlenikId" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+          <ScalarProperty Name="DatumKreiranja" ColumnName="DatumKreiranja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZaspolenikSet">
+      <EntityTypeMapping TypeName="BaustelleDBModel.ZaspolenikSet">
+        <MappingFragment StoreEntitySet="ZaspolenikSet">
+          <ScalarProperty Name="IdZaposlenik" ColumnName="IdZaposlenik" />
+          <ScalarProperty Name="UlogaId" ColumnName="UlogaId" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Kontakt" ColumnName="Kontakt" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

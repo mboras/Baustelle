@@ -1,0 +1,540 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{119B2546-6FD5-462B-8E0D-E5CD7E127AB1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Baustelle</RootNamespace>
+    <AssemblyName>Baustelle</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio 12.0\ReportViewer\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaustelleDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaustelleDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaustelleDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="BaustelleDBDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDBDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BaustelleDBDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDBDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BaustelleDBDataSet2.cs">
+      <DependentUpon>BaustelleDBDataSet2.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BaustelleDBDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BaustelleDBDataSet21.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BaustelleDBDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="F1.cs" />
+    <Compile Include="FormKorisnik.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormKorisnik.Designer.cs">
+      <DependentUpon>FormKorisnik.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiStavkePonude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiStavkePonude.Designer.cs">
+      <DependentUpon>frmDetaljiStavkePonude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiPonude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiPonude.Designer.cs">
+      <DependentUpon>frmDetaljiPonude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAdministrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAdministrator.Designer.cs">
+      <DependentUpon>FormAdministrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiKlijenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiKlijenta.Designer.cs">
+      <DependentUpon>frmDetaljiKlijenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiMaterijala.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiMaterijala.Designer.cs">
+      <DependentUpon>frmDetaljiMaterijala.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiJedinicaMjere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiJedinicaMjere.Designer.cs">
+      <DependentUpon>frmDetaljiJedinicaMjere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiOstavciUsluge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiOstavciUsluge.Designer.cs">
+      <DependentUpon>frmDetaljiOstavciUsluge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiOUsluzi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiOUsluzi.Designer.cs">
+      <DependentUpon>frmDetaljiOUsluzi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDetaljiZaposlenika.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetaljiZaposlenika.Designer.cs">
+      <DependentUpon>frmDetaljiZaposlenika.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDodajJedinicuMjere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDodajJedinicuMjere.Designer.cs">
+      <DependentUpon>frmDodajJedinicuMjere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDodajKlijenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDodajKlijenta.Designer.cs">
+      <DependentUpon>frmDodajKlijenta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDodajMaterijal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDodajMaterijal.Designer.cs">
+      <DependentUpon>frmDodajMaterijal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIspisPonude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIspisPonude.Designer.cs">
+      <DependentUpon>frmIspisPonude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmIzvjestaj.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIzvjestaj.Designer.cs">
+      <DependentUpon>frmIzvjestaj.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmJedinicaMjere.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmJedinicaMjere.Designer.cs">
+      <DependentUpon>frmJedinicaMjere.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKlijenti.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKlijenti.Designer.cs">
+      <DependentUpon>frmKlijenti.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMaterijali.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMaterijali.Designer.cs">
+      <DependentUpon>frmMaterijali.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNovaPonuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNovaPonuda.Designer.cs">
+      <DependentUpon>frmNovaPonuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNovaStavkaPonude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNovaStavkaPonude.Designer.cs">
+      <DependentUpon>frmNovaStavkaPonude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNovaStavkaUsluge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNovaStavkaUsluge.Designer.cs">
+      <DependentUpon>frmNovaStavkaUsluge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNovaUsluga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNovaUsluga.Designer.cs">
+      <DependentUpon>frmNovaUsluga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmOnama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOnama.Designer.cs">
+      <DependentUpon>frmOnama.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPonude.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPonude.Designer.cs">
+      <DependentUpon>frmPonude.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegistracija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistracija.Designer.cs">
+      <DependentUpon>frmRegistracija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsluge.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsluge.Designer.cs">
+      <DependentUpon>frmUsluge.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmZaposlenici.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmZaposlenici.Designer.cs">
+      <DependentUpon>frmZaposlenici.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JedinicaMjereSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KlijentSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MaterijaDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MaterijaDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="MaterijalSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OsvjeziTablicu.cs" />
+    <Compile Include="PonudaSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvjeraLogina.cs" />
+    <Compile Include="RacunPonude.cs" />
+    <Compile Include="StavkaPonudeSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StavkaUslugeSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UlogaSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UslugaSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ZaspolenikSet.cs">
+      <DependentUpon>BaustelleDB.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="FormKorisnik.resx">
+      <DependentUpon>FormKorisnik.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiStavkePonude.resx">
+      <DependentUpon>frmDetaljiStavkePonude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiPonude.resx">
+      <DependentUpon>frmDetaljiPonude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAdministrator.resx">
+      <DependentUpon>FormAdministrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiKlijenta.resx">
+      <DependentUpon>frmDetaljiKlijenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiMaterijala.resx">
+      <DependentUpon>frmDetaljiMaterijala.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiJedinicaMjere.resx">
+      <DependentUpon>frmDetaljiJedinicaMjere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiOstavciUsluge.resx">
+      <DependentUpon>frmDetaljiOstavciUsluge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiOUsluzi.resx">
+      <DependentUpon>frmDetaljiOUsluzi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDetaljiZaposlenika.resx">
+      <DependentUpon>frmDetaljiZaposlenika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDodajJedinicuMjere.resx">
+      <DependentUpon>frmDodajJedinicuMjere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDodajKlijenta.resx">
+      <DependentUpon>frmDodajKlijenta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDodajMaterijal.resx">
+      <DependentUpon>frmDodajMaterijal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIspisPonude.resx">
+      <DependentUpon>frmIspisPonude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmIzvjestaj.resx">
+      <DependentUpon>frmIzvjestaj.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmJedinicaMjere.resx">
+      <DependentUpon>frmJedinicaMjere.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKlijenti.resx">
+      <DependentUpon>frmKlijenti.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMaterijali.resx">
+      <DependentUpon>frmMaterijali.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNovaPonuda.resx">
+      <DependentUpon>frmNovaPonuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNovaStavkaPonude.resx">
+      <DependentUpon>frmNovaStavkaPonude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNovaStavkaUsluge.resx">
+      <DependentUpon>frmNovaStavkaUsluge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNovaUsluga.resx">
+      <DependentUpon>frmNovaUsluga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOnama.resx">
+      <DependentUpon>frmOnama.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPonude.resx">
+      <DependentUpon>frmPonude.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistracija.resx">
+      <DependentUpon>frmRegistracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsluge.resx">
+      <DependentUpon>frmUsluge.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmZaposlenici.resx">
+      <DependentUpon>frmZaposlenici.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Izvjesce.rdlc" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EntityDeploy Include="BaustelleDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BaustelleDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BaustelleDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaustelleDB.edmx</DependentUpon>
+      <LastGenOutput>BaustelleDB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="BaustelleDB.edmx.diagram">
+      <DependentUpon>BaustelleDB.edmx</DependentUpon>
+    </None>
+    <None Include="BaustelleDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BaustelleDB.edmx</DependentUpon>
+      <LastGenOutput>BaustelleDB.cs</LastGenOutput>
+    </None>
+    <None Include="BaustelleDBDataSet.xsc">
+      <DependentUpon>BaustelleDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BaustelleDBDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BaustelleDBDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BaustelleDBDataSet.xss">
+      <DependentUpon>BaustelleDBDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BaustelleDBDataSet1.xsc">
+      <DependentUpon>BaustelleDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="BaustelleDBDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BaustelleDBDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BaustelleDBDataSet1.xss">
+      <DependentUpon>BaustelleDBDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="BaustelleDBDataSet2.xsc">
+      <DependentUpon>BaustelleDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="BaustelleDBDataSet2.xsd">
+      <SubType>Designer</SubType>
+      <LastGenOutput>BaustelleDBDataSet21.Designer.cs</LastGenOutput>
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
+    <None Include="BaustelleDBDataSet2.xss">
+      <DependentUpon>BaustelleDBDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="MaterijaDataSet.xsc">
+      <DependentUpon>MaterijaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MaterijaDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MaterijaDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MaterijaDataSet.xss">
+      <DependentUpon>MaterijaDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BaustelleDB.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="BaustelleDB_log.ldf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>BaustelleDB.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

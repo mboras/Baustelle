@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BaustelleDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="JedinicaMjereSet">
+    <Key>
+      <PropertyRef Name="IdJedinicaMjere" />
+    </Key>
+    <Property Name="IdJedinicaMjere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SkraceniNaziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="MaterijalSet" Relationship="Self.FK_JedinicaMjereMaterijal" FromRole="JedinicaMjereSet" ToRole="MaterijalSet" />
+  </EntityType>
+  <EntityType Name="KlijentSet">
+    <Key>
+      <PropertyRef Name="IdKlijent" />
+    </Key>
+    <Property Name="IdKlijent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="OIB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Telefon" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PonudaSet" Relationship="Self.FK_KlijentPonuda" FromRole="KlijentSet" ToRole="PonudaSet" />
+  </EntityType>
+  <EntityType Name="MaterijalSet">
+    <Key>
+      <PropertyRef Name="IdMaterijal" />
+    </Key>
+    <Property Name="IdMaterijal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Napomena" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JedinicaMjereId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="JedinicaMjereSet" Relationship="Self.FK_JedinicaMjereMaterijal" FromRole="MaterijalSet" ToRole="JedinicaMjereSet" />
+    <NavigationProperty Name="StavkaUslugeSet" Relationship="Self.FK_MaterijalStavkaUsluge" FromRole="MaterijalSet" ToRole="StavkaUslugeSet" />
+  </EntityType>
+  <EntityType Name="PonudaSet">
+    <Key>
+      <PropertyRef Name="IdPonuda" />
+    </Key>
+    <Property Name="IdPonuda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KlijentId" Type="Int32" Nullable="false" />
+    <Property Name="ZaposlenikId" Type="Int32" Nullable="false" />
+    <Property Name="DatumIzdavanja" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Napomena" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="KlijentSet" Relationship="Self.FK_KlijentPonuda" FromRole="PonudaSet" ToRole="KlijentSet" />
+    <NavigationProperty Name="StavkaPonudeSet" Relationship="Self.FK_PonudaStavkaPonude" FromRole="PonudaSet" ToRole="StavkaPonudeSet" />
+    <NavigationProperty Name="ZaspolenikSet" Relationship="Self.FK_ZaspolenikPonuda" FromRole="PonudaSet" ToRole="ZaspolenikSet" />
+  </EntityType>
+  <EntityType Name="StavkaPonudeSet">
+    <Key>
+      <PropertyRef Name="IdStavkePonude" />
+    </Key>
+    <Property Name="IdStavkePonude" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PonudaId" Type="Int32" Nullable="false" />
+    <Property Name="UslugaId" Type="Int32" Nullable="false" />
+    <Property Name="Kolicina" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="PonudaSet" Relationship="Self.FK_PonudaStavkaPonude" FromRole="StavkaPonudeSet" ToRole="PonudaSet" />
+    <NavigationProperty Name="UslugaSet" Relationship="Self.FK_UslugaStavkaPonude" FromRole="StavkaPonudeSet" ToRole="UslugaSet" />
+  </EntityType>
+  <EntityType Name="StavkaUslugeSet">
+    <Key>
+      <PropertyRef Name="IdStavkaUsluge" />
+    </Key>
+    <Property Name="IdStavkaUsluge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UslugaId" Type="Int32" Nullable="false" />
+    <Property Name="MaterijalId" Type="Int32" Nullable="false" />
+    <Property Name="Kolicina" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <NavigationProperty Name="MaterijalSet" Relationship="Self.FK_MaterijalStavkaUsluge" FromRole="StavkaUslugeSet" ToRole="MaterijalSet" />
+    <NavigationProperty Name="UslugaSet" Relationship="Self.FK_UslugaStavkaUsluge" FromRole="StavkaUslugeSet" ToRole="UslugaSet" />
+  </EntityType>
+  <EntityType Name="UlogaSet">
+    <Key>
+      <PropertyRef Name="IdUloga" />
+    </Key>
+    <Property Name="IdUloga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ZaspolenikSet" Relationship="Self.FK_UlogaZaspolenik" FromRole="UlogaSet" ToRole="ZaspolenikSet" />
+  </EntityType>
+  <EntityType Name="UslugaSet">
+    <Key>
+      <PropertyRef Name="IdUsluge" />
+    </Key>
+    <Property Name="IdUsluge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ZaposlenikId" Type="Int32" Nullable="false" />
+    <Property Name="Naziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cijena" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="DatumKreiranja" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="StavkaPonudeSet" Relationship="Self.FK_UslugaStavkaPonude" FromRole="UslugaSet" ToRole="StavkaPonudeSet" />
+    <NavigationProperty Name="StavkaUslugeSet" Relationship="Self.FK_UslugaStavkaUsluge" FromRole="UslugaSet" ToRole="StavkaUslugeSet" />
+    <NavigationProperty Name="ZaspolenikSet" Relationship="Self.FK_ZaspolenikUsluga" FromRole="UslugaSet" ToRole="ZaspolenikSet" />
+  </EntityType>
+  <EntityType Name="ZaspolenikSet">
+    <Key>
+      <PropertyRef Name="IdZaposlenik" />
+    </Key>
+    <Property Name="IdZaposlenik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UlogaId" Type="Int32" Nullable="false" />
+    <Property Name="Ime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Prezime" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OIB" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Kontakt" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PonudaSet" Relationship="Self.FK_ZaspolenikPonuda" FromRole="ZaspolenikSet" ToRole="PonudaSet" />
+    <NavigationProperty Name="UlogaSet" Relationship="Self.FK_UlogaZaspolenik" FromRole="ZaspolenikSet" ToRole="UlogaSet" />
+    <NavigationProperty Name="UslugaSet" Relationship="Self.FK_ZaspolenikUsluga" FromRole="ZaspolenikSet" ToRole="UslugaSet" />
+  </EntityType>
+  <Association Name="FK_JedinicaMjereMaterijal">
+    <End Role="JedinicaMjereSet" Type="Self.JedinicaMjereSet" Multiplicity="1" />
+    <End Role="MaterijalSet" Type="Self.MaterijalSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JedinicaMjereSet">
+        <PropertyRef Name="IdJedinicaMjere" />
+      </Principal>
+      <Dependent Role="MaterijalSet">
+        <PropertyRef Name="JedinicaMjereId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KlijentPonuda">
+    <End Role="KlijentSet" Type="Self.KlijentSet" Multiplicity="1" />
+    <End Role="PonudaSet" Type="Self.PonudaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KlijentSet">
+        <PropertyRef Name="IdKlijent" />
+      </Principal>
+      <Dependent Role="PonudaSet">
+        <PropertyRef Name="KlijentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MaterijalStavkaUsluge">
+    <End Role="MaterijalSet" Type="Self.MaterijalSet" Multiplicity="1" />
+    <End Role="StavkaUslugeSet" Type="Self.StavkaUslugeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MaterijalSet">
+        <PropertyRef Name="IdMaterijal" />
+      </Principal>
+      <Dependent Role="StavkaUslugeSet">
+        <PropertyRef Name="MaterijalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PonudaStavkaPonude">
+    <End Role="PonudaSet" Type="Self.PonudaSet" Multiplicity="1" />
+    <End Role="StavkaPonudeSet" Type="Self.StavkaPonudeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PonudaSet">
+        <PropertyRef Name="IdPonuda" />
+      </Principal>
+      <Dependent Role="StavkaPonudeSet">
+        <PropertyRef Name="PonudaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZaspolenikPonuda">
+    <End Role="ZaspolenikSet" Type="Self.ZaspolenikSet" Multiplicity="1" />
+    <End Role="PonudaSet" Type="Self.PonudaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZaspolenikSet">
+        <PropertyRef Name="IdZaposlenik" />
+      </Principal>
+      <Dependent Role="PonudaSet">
+        <PropertyRef Name="ZaposlenikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UslugaStavkaPonude">
+    <End Role="UslugaSet" Type="Self.UslugaSet" Multiplicity="1" />
+    <End Role="StavkaPonudeSet" Type="Self.StavkaPonudeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UslugaSet">
+        <PropertyRef Name="IdUsluge" />
+      </Principal>
+      <Dependent Role="StavkaPonudeSet">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UslugaStavkaUsluge">
+    <End Role="UslugaSet" Type="Self.UslugaSet" Multiplicity="1" />
+    <End Role="StavkaUslugeSet" Type="Self.StavkaUslugeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UslugaSet">
+        <PropertyRef Name="IdUsluge" />
+      </Principal>
+      <Dependent Role="StavkaUslugeSet">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UlogaZaspolenik">
+    <End Role="UlogaSet" Type="Self.UlogaSet" Multiplicity="1" />
+    <End Role="ZaspolenikSet" Type="Self.ZaspolenikSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UlogaSet">
+        <PropertyRef Name="IdUloga" />
+      </Principal>
+      <Dependent Role="ZaspolenikSet">
+        <PropertyRef Name="UlogaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ZaspolenikUsluga">
+    <End Role="ZaspolenikSet" Type="Self.ZaspolenikSet" Multiplicity="1" />
+    <End Role="UslugaSet" Type="Self.UslugaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ZaspolenikSet">
+        <PropertyRef Name="IdZaposlenik" />
+      </Principal>
+      <Dependent Role="UslugaSet">
+        <PropertyRef Name="ZaposlenikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BaustelleDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="JedinicaMjereSet" EntityType="Self.JedinicaMjereSet" />
+    <EntitySet Name="KlijentSet" EntityType="Self.KlijentSet" />
+    <EntitySet Name="MaterijalSet" EntityType="Self.MaterijalSet" />
+    <EntitySet Name="PonudaSet" EntityType="Self.PonudaSet" />
+    <EntitySet Name="StavkaPonudeSet" EntityType="Self.StavkaPonudeSet" />
+    <EntitySet Name="StavkaUslugeSet" EntityType="Self.StavkaUslugeSet" />
+    <EntitySet Name="UlogaSet" EntityType="Self.UlogaSet" />
+    <EntitySet Name="UslugaSet" EntityType="Self.UslugaSet" />
+    <EntitySet Name="ZaspolenikSet" EntityType="Self.ZaspolenikSet" />
+    <AssociationSet Name="FK_JedinicaMjereMaterijal" Association="Self.FK_JedinicaMjereMaterijal">
+      <End Role="JedinicaMjereSet" EntitySet="JedinicaMjereSet" />
+      <End Role="MaterijalSet" EntitySet="MaterijalSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KlijentPonuda" Association="Self.FK_KlijentPonuda">
+      <End Role="KlijentSet" EntitySet="KlijentSet" />
+      <End Role="PonudaSet" EntitySet="PonudaSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MaterijalStavkaUsluge" Association="Self.FK_MaterijalStavkaUsluge">
+      <End Role="MaterijalSet" EntitySet="MaterijalSet" />
+      <End Role="StavkaUslugeSet" EntitySet="StavkaUslugeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PonudaStavkaPonude" Association="Self.FK_PonudaStavkaPonude">
+      <End Role="PonudaSet" EntitySet="PonudaSet" />
+      <End Role="StavkaPonudeSet" EntitySet="StavkaPonudeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZaspolenikPonuda" Association="Self.FK_ZaspolenikPonuda">
+      <End Role="ZaspolenikSet" EntitySet="ZaspolenikSet" />
+      <End Role="PonudaSet" EntitySet="PonudaSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UslugaStavkaPonude" Association="Self.FK_UslugaStavkaPonude">
+      <End Role="UslugaSet" EntitySet="UslugaSet" />
+      <End Role="StavkaPonudeSet" EntitySet="StavkaPonudeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UslugaStavkaUsluge" Association="Self.FK_UslugaStavkaUsluge">
+      <End Role="UslugaSet" EntitySet="UslugaSet" />
+      <End Role="StavkaUslugeSet" EntitySet="StavkaUslugeSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UlogaZaspolenik" Association="Self.FK_UlogaZaspolenik">
+      <End Role="UlogaSet" EntitySet="UlogaSet" />
+      <End Role="ZaspolenikSet" EntitySet="ZaspolenikSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ZaspolenikUsluga" Association="Self.FK_ZaspolenikUsluga">
+      <End Role="ZaspolenikSet" EntitySet="ZaspolenikSet" />
+      <End Role="UslugaSet" EntitySet="UslugaSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

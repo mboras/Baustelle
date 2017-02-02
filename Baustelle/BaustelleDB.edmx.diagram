@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="574a411bd1fd475783d2a1547e9a4b86" Name="Diagram1">
+        <EntityTypeShape EntityType="BaustelleDBModel.JedinicaMjereSet" Width="1.5" PointX="3" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.KlijentSet" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.MaterijalSet" Width="1.5" PointX="5.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.PonudaSet" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.StavkaPonudeSet" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.StavkaUslugeSet" Width="1.5" PointX="7.5" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.UlogaSet" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.UslugaSet" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="BaustelleDBModel.ZaspolenikSet" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="BaustelleDBModel.FK_JedinicaMjereMaterijal" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_KlijentPonuda" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_MaterijalStavkaUsluge" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_PonudaStavkaPonude" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_ZaspolenikPonuda" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_UslugaStavkaPonude" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_UslugaStavkaUsluge" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_UlogaZaspolenik" ManuallyRouted="false" />
+        <AssociationConnector Association="BaustelleDBModel.FK_ZaspolenikUsluga" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

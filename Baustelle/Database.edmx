@@ -1,0 +1,644 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Database.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DatabaseStoreContainer">
+    <EntitySet Name="JedinicaMjereSet" EntityType="Database.Store.JedinicaMjereSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaterijalSet" EntityType="Database.Store.MaterijalSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UslugaSet" EntityType="Database.Store.UslugaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StavkaUslugeSet" EntityType="Database.Store.StavkaUslugeSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ZaspolenikSet" EntityType="Database.Store.ZaspolenikSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="UlogaSet" EntityType="Database.Store.UlogaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KlijentSet" EntityType="Database.Store.KlijentSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PonudaSet" EntityType="Database.Store.PonudaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="StavkaPonudeSet" EntityType="Database.Store.StavkaPonudeSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="JedinicaMjereMaterijal" Association="Database.Store.JedinicaMjereMaterijal">
+      <End Role="JedinicaMjere" EntitySet="JedinicaMjereSet" />
+      <End Role="Materijal" EntitySet="MaterijalSet" />
+    </AssociationSet>
+    <AssociationSet Name="MaterijalStavkaUsluge" Association="Database.Store.MaterijalStavkaUsluge">
+      <End Role="Materijal" EntitySet="MaterijalSet" />
+      <End Role="StavkaUsluge" EntitySet="StavkaUslugeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UslugaStavkaUsluge" Association="Database.Store.UslugaStavkaUsluge">
+      <End Role="Usluga" EntitySet="UslugaSet" />
+      <End Role="StavkaUsluge" EntitySet="StavkaUslugeSet" />
+    </AssociationSet>
+    <AssociationSet Name="ZaspolenikUsluga" Association="Database.Store.ZaspolenikUsluga">
+      <End Role="Zaspolenik" EntitySet="ZaspolenikSet" />
+      <End Role="Usluga" EntitySet="UslugaSet" />
+    </AssociationSet>
+    <AssociationSet Name="UlogaZaspolenik" Association="Database.Store.UlogaZaspolenik">
+      <End Role="Uloga" EntitySet="UlogaSet" />
+      <End Role="Zaspolenik" EntitySet="ZaspolenikSet" />
+    </AssociationSet>
+    <AssociationSet Name="ZaspolenikPonuda" Association="Database.Store.ZaspolenikPonuda">
+      <End Role="Zaspolenik" EntitySet="ZaspolenikSet" />
+      <End Role="Ponuda" EntitySet="PonudaSet" />
+    </AssociationSet>
+    <AssociationSet Name="PonudaStavkaPonude" Association="Database.Store.PonudaStavkaPonude">
+      <End Role="Ponuda" EntitySet="PonudaSet" />
+      <End Role="StavkaPonude" EntitySet="StavkaPonudeSet" />
+    </AssociationSet>
+    <AssociationSet Name="UslugaStavkaPonude" Association="Database.Store.UslugaStavkaPonude">
+      <End Role="Usluga" EntitySet="UslugaSet" />
+      <End Role="StavkaPonude" EntitySet="StavkaPonudeSet" />
+    </AssociationSet>
+    <AssociationSet Name="KlijentPonuda" Association="Database.Store.KlijentPonuda">
+      <End Role="Klijent" EntitySet="KlijentSet" />
+      <End Role="Ponuda" EntitySet="PonudaSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="JedinicaMjereSet">
+    <Key>
+      <PropertyRef Name="IdJedinicaMjere" />
+    </Key>
+    <Property Name="IdJedinicaMjere" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SkraceniNaziv" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterijalSet">
+    <Key>
+      <PropertyRef Name="IdMaterijal" />
+    </Key>
+    <Property Name="IdMaterijal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Napomena" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="JedinicaMjereId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UslugaSet">
+    <Key>
+      <PropertyRef Name="IdUsluge" />
+    </Key>
+    <Property Name="IdUsluge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ZaposlenikId" Type="int" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Cijena" Type="decimal" Nullable="false" />
+    <Property Name="DatumKreiranja" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StavkaUslugeSet">
+    <Key>
+      <PropertyRef Name="IdStavkaUsluge" />
+    </Key>
+    <Property Name="IdStavkaUsluge" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UslugaId" Type="int" Nullable="false" />
+    <Property Name="MaterijalId" Type="int" Nullable="false" />
+    <Property Name="Kolicina" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ZaspolenikSet">
+    <Key>
+      <PropertyRef Name="IdZaposlenik" />
+    </Key>
+    <Property Name="IdZaposlenik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UlogaId" Type="int" Nullable="false" />
+    <Property Name="Ime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Prezime" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DatumRodjenja" Type="datetime" Nullable="false" />
+    <Property Name="OIB" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adresa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Kontakt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UlogaSet">
+    <Key>
+      <PropertyRef Name="IdUloga" />
+    </Key>
+    <Property Name="IdUloga" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KlijentSet">
+    <Key>
+      <PropertyRef Name="IdKlijent" />
+    </Key>
+    <Property Name="IdKlijent" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Naziv" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="OIB" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Adresa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Telefon" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PonudaSet">
+    <Key>
+      <PropertyRef Name="IdPonuda" />
+    </Key>
+    <Property Name="IdPonuda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KlijentId" Type="int" Nullable="false" />
+    <Property Name="ZaposlenikId" Type="int" Nullable="false" />
+    <Property Name="DatumIzdavanja" Type="datetime" Nullable="false" />
+    <Property Name="Napomena" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StavkaPonudeSet">
+    <Key>
+      <PropertyRef Name="IdStavkePonude" />
+    </Key>
+    <Property Name="IdStavkePonude" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PonudaId" Type="int" Nullable="false" />
+    <Property Name="UslugaId" Type="int" Nullable="false" />
+    <Property Name="Kolicina" Type="decimal" Nullable="false" />
+  </EntityType>
+  <Association Name="JedinicaMjereMaterijal">
+    <End Role="JedinicaMjere" Type="Database.Store.JedinicaMjereSet" Multiplicity="1" />
+    <End Role="Materijal" Type="Database.Store.MaterijalSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="JedinicaMjere">
+        <PropertyRef Name="IdJedinicaMjere" />
+      </Principal>
+      <Dependent Role="Materijal">
+        <PropertyRef Name="JedinicaMjereId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaterijalStavkaUsluge">
+    <End Role="Materijal" Type="Database.Store.MaterijalSet" Multiplicity="1" />
+    <End Role="StavkaUsluge" Type="Database.Store.StavkaUslugeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Materijal">
+        <PropertyRef Name="IdMaterijal" />
+      </Principal>
+      <Dependent Role="StavkaUsluge">
+        <PropertyRef Name="MaterijalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UslugaStavkaUsluge">
+    <End Role="Usluga" Type="Database.Store.UslugaSet" Multiplicity="1" />
+    <End Role="StavkaUsluge" Type="Database.Store.StavkaUslugeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usluga">
+        <PropertyRef Name="IdUsluge" />
+      </Principal>
+      <Dependent Role="StavkaUsluge">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ZaspolenikUsluga">
+    <End Role="Zaspolenik" Type="Database.Store.ZaspolenikSet" Multiplicity="1" />
+    <End Role="Usluga" Type="Database.Store.UslugaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaspolenik">
+        <PropertyRef Name="IdZaposlenik" />
+      </Principal>
+      <Dependent Role="Usluga">
+        <PropertyRef Name="ZaposlenikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UlogaZaspolenik">
+    <End Role="Uloga" Type="Database.Store.UlogaSet" Multiplicity="1" />
+    <End Role="Zaspolenik" Type="Database.Store.ZaspolenikSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uloga">
+        <PropertyRef Name="IdUloga" />
+      </Principal>
+      <Dependent Role="Zaspolenik">
+        <PropertyRef Name="UlogaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ZaspolenikPonuda">
+    <End Role="Zaspolenik" Type="Database.Store.ZaspolenikSet" Multiplicity="1" />
+    <End Role="Ponuda" Type="Database.Store.PonudaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zaspolenik">
+        <PropertyRef Name="IdZaposlenik" />
+      </Principal>
+      <Dependent Role="Ponuda">
+        <PropertyRef Name="ZaposlenikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PonudaStavkaPonude">
+    <End Role="Ponuda" Type="Database.Store.PonudaSet" Multiplicity="1" />
+    <End Role="StavkaPonude" Type="Database.Store.StavkaPonudeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ponuda">
+        <PropertyRef Name="IdPonuda" />
+      </Principal>
+      <Dependent Role="StavkaPonude">
+        <PropertyRef Name="PonudaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UslugaStavkaPonude">
+    <End Role="Usluga" Type="Database.Store.UslugaSet" Multiplicity="1" />
+    <End Role="StavkaPonude" Type="Database.Store.StavkaPonudeSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usluga">
+        <PropertyRef Name="IdUsluge" />
+      </Principal>
+      <Dependent Role="StavkaPonude">
+        <PropertyRef Name="UslugaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="KlijentPonuda">
+    <End Role="Klijent" Type="Database.Store.KlijentSet" Multiplicity="1" />
+    <End Role="Ponuda" Type="Database.Store.PonudaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klijent">
+        <PropertyRef Name="IdKlijent" />
+      </Principal>
+      <Dependent Role="Ponuda">
+        <PropertyRef Name="KlijentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Database" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DatabaseContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="JedinicaMjereSet" EntityType="Database.JedinicaMjere" />
+          <EntitySet Name="MaterijalSet" EntityType="Database.Materijal" />
+          <AssociationSet Name="JedinicaMjereMaterijal" Association="Database.JedinicaMjereMaterijal">
+            <End Role="JedinicaMjere" EntitySet="JedinicaMjereSet" />
+            <End Role="Materijal" EntitySet="MaterijalSet" />
+          </AssociationSet>
+          <EntitySet Name="UslugaSet" EntityType="Database.Usluga" />
+          <EntitySet Name="StavkaUslugeSet" EntityType="Database.StavkaUsluge" />
+          <AssociationSet Name="MaterijalStavkaUsluge" Association="Database.MaterijalStavkaUsluge">
+            <End Role="Materijal" EntitySet="MaterijalSet" />
+            <End Role="StavkaUsluge" EntitySet="StavkaUslugeSet" />
+          </AssociationSet>
+          <AssociationSet Name="UslugaStavkaUsluge" Association="Database.UslugaStavkaUsluge">
+            <End Role="Usluga" EntitySet="UslugaSet" />
+            <End Role="StavkaUsluge" EntitySet="StavkaUslugeSet" />
+          </AssociationSet>
+          <EntitySet Name="ZaspolenikSet" EntityType="Database.Zaspolenik" />
+          <AssociationSet Name="ZaspolenikUsluga" Association="Database.ZaspolenikUsluga">
+            <End Role="Zaspolenik" EntitySet="ZaspolenikSet" />
+            <End Role="Usluga" EntitySet="UslugaSet" />
+          </AssociationSet>
+          <EntitySet Name="UlogaSet" EntityType="Database.Uloga" />
+          <AssociationSet Name="UlogaZaspolenik" Association="Database.UlogaZaspolenik">
+            <End Role="Uloga" EntitySet="UlogaSet" />
+            <End Role="Zaspolenik" EntitySet="ZaspolenikSet" />
+          </AssociationSet>
+          <EntitySet Name="KlijentSet" EntityType="Database.Klijent" />
+          <EntitySet Name="PonudaSet" EntityType="Database.Ponuda" />
+          <AssociationSet Name="ZaspolenikPonuda" Association="Database.ZaspolenikPonuda">
+            <End Role="Zaspolenik" EntitySet="ZaspolenikSet" />
+            <End Role="Ponuda" EntitySet="PonudaSet" />
+          </AssociationSet>
+          <EntitySet Name="StavkaPonudeSet" EntityType="Database.StavkaPonude" />
+          <AssociationSet Name="PonudaStavkaPonude" Association="Database.PonudaStavkaPonude">
+            <End Role="Ponuda" EntitySet="PonudaSet" />
+            <End Role="StavkaPonude" EntitySet="StavkaPonudeSet" />
+          </AssociationSet>
+          <AssociationSet Name="UslugaStavkaPonude" Association="Database.UslugaStavkaPonude">
+            <End Role="Usluga" EntitySet="UslugaSet" />
+            <End Role="StavkaPonude" EntitySet="StavkaPonudeSet" />
+          </AssociationSet>
+          <AssociationSet Name="KlijentPonuda" Association="Database.KlijentPonuda">
+            <End Role="Klijent" EntitySet="KlijentSet" />
+            <End Role="Ponuda" EntitySet="PonudaSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="JedinicaMjere">
+          <Key>
+            <PropertyRef Name="IdJedinicaMjere" />
+          </Key>
+          <Property Name="IdJedinicaMjere" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <Property Name="SkraceniNaziv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Materijal" Relationship="Database.JedinicaMjereMaterijal" FromRole="JedinicaMjere" ToRole="Materijal" />
+        </EntityType>
+        <EntityType Name="Materijal">
+          <Key>
+            <PropertyRef Name="IdMaterijal" />
+          </Key>
+          <Property Name="IdMaterijal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <Property Name="Napomena" Type="String" Nullable="false" />
+          <NavigationProperty Name="JedinicaMjere" Relationship="Database.JedinicaMjereMaterijal" FromRole="Materijal" ToRole="JedinicaMjere" />
+          <Property Name="JedinicaMjereId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="StavkaUsluge" Relationship="Database.MaterijalStavkaUsluge" FromRole="Materijal" ToRole="StavkaUsluge" />
+        </EntityType>
+        <Association Name="JedinicaMjereMaterijal">
+          <End Type="Database.JedinicaMjere" Role="JedinicaMjere" Multiplicity="1" />
+          <End Type="Database.Materijal" Role="Materijal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="JedinicaMjere">
+              <PropertyRef Name="IdJedinicaMjere" />
+            </Principal>
+            <Dependent Role="Materijal">
+              <PropertyRef Name="JedinicaMjereId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Usluga">
+          <Key>
+            <PropertyRef Name="IdUsluge" />
+          </Key>
+          <Property Name="IdUsluge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ZaposlenikId" Type="Int32" Nullable="false" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <Property Name="Cijena" Type="Decimal" Nullable="false" />
+          <Property Name="DatumKreiranja" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="StavkaUsluge" Relationship="Database.UslugaStavkaUsluge" FromRole="Usluga" ToRole="StavkaUsluge" />
+          <NavigationProperty Name="Zaspolenik" Relationship="Database.ZaspolenikUsluga" FromRole="Usluga" ToRole="Zaspolenik" />
+          <NavigationProperty Name="StavkaPonude" Relationship="Database.UslugaStavkaPonude" FromRole="Usluga" ToRole="StavkaPonude" />
+        </EntityType>
+        <EntityType Name="StavkaUsluge">
+          <Key>
+            <PropertyRef Name="IdStavkaUsluge" />
+          </Key>
+          <Property Name="IdStavkaUsluge" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UslugaId" Type="Int32" Nullable="false" />
+          <Property Name="MaterijalId" Type="Int32" Nullable="false" />
+          <Property Name="Kolicina" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Materijal" Relationship="Database.MaterijalStavkaUsluge" FromRole="StavkaUsluge" ToRole="Materijal" />
+          <NavigationProperty Name="Usluga" Relationship="Database.UslugaStavkaUsluge" FromRole="StavkaUsluge" ToRole="Usluga" />
+        </EntityType>
+        <Association Name="MaterijalStavkaUsluge">
+          <End Type="Database.Materijal" Role="Materijal" Multiplicity="1" />
+          <End Type="Database.StavkaUsluge" Role="StavkaUsluge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materijal">
+              <PropertyRef Name="IdMaterijal" />
+            </Principal>
+            <Dependent Role="StavkaUsluge">
+              <PropertyRef Name="MaterijalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UslugaStavkaUsluge">
+          <End Type="Database.Usluga" Role="Usluga" Multiplicity="1" />
+          <End Type="Database.StavkaUsluge" Role="StavkaUsluge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="IdUsluge" />
+            </Principal>
+            <Dependent Role="StavkaUsluge">
+              <PropertyRef Name="UslugaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Zaspolenik">
+          <Key>
+            <PropertyRef Name="IdZaposlenik" />
+          </Key>
+          <Property Name="IdZaposlenik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UlogaId" Type="Int32" Nullable="false" />
+          <Property Name="Ime" Type="String" Nullable="false" />
+          <Property Name="Prezime" Type="String" Nullable="false" />
+          <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" />
+          <Property Name="OIB" Type="String" Nullable="false" />
+          <Property Name="Adresa" Type="String" Nullable="false" />
+          <Property Name="Kontakt" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <Property Name="Username" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="Usluga" Relationship="Database.ZaspolenikUsluga" FromRole="Zaspolenik" ToRole="Usluga" />
+          <NavigationProperty Name="Uloga" Relationship="Database.UlogaZaspolenik" FromRole="Zaspolenik" ToRole="Uloga" />
+          <NavigationProperty Name="Ponuda" Relationship="Database.ZaspolenikPonuda" FromRole="Zaspolenik" ToRole="Ponuda" />
+        </EntityType>
+        <Association Name="ZaspolenikUsluga">
+          <End Type="Database.Zaspolenik" Role="Zaspolenik" Multiplicity="1" />
+          <End Type="Database.Usluga" Role="Usluga" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaspolenik">
+              <PropertyRef Name="IdZaposlenik" />
+            </Principal>
+            <Dependent Role="Usluga">
+              <PropertyRef Name="ZaposlenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Uloga">
+          <Key>
+            <PropertyRef Name="IdUloga" />
+          </Key>
+          <Property Name="IdUloga" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <NavigationProperty Name="Zaspolenik" Relationship="Database.UlogaZaspolenik" FromRole="Uloga" ToRole="Zaspolenik" />
+        </EntityType>
+        <Association Name="UlogaZaspolenik">
+          <End Type="Database.Uloga" Role="Uloga" Multiplicity="1" />
+          <End Type="Database.Zaspolenik" Role="Zaspolenik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Uloga">
+              <PropertyRef Name="IdUloga" />
+            </Principal>
+            <Dependent Role="Zaspolenik">
+              <PropertyRef Name="UlogaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Klijent">
+          <Key>
+            <PropertyRef Name="IdKlijent" />
+          </Key>
+          <Property Name="IdKlijent" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Naziv" Type="String" Nullable="false" />
+          <Property Name="OIB" Type="String" Nullable="false" />
+          <Property Name="Adresa" Type="String" Nullable="false" />
+          <Property Name="Telefon" Type="String" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ponuda" Relationship="Database.KlijentPonuda" FromRole="Klijent" ToRole="Ponuda" />
+        </EntityType>
+        <EntityType Name="Ponuda">
+          <Key>
+            <PropertyRef Name="IdPonuda" />
+          </Key>
+          <Property Name="IdPonuda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KlijentId" Type="Int32" Nullable="false" />
+          <Property Name="ZaposlenikId" Type="Int32" Nullable="false" />
+          <Property Name="DatumIzdavanja" Type="DateTime" Nullable="false" />
+          <Property Name="Napomena" Type="String" Nullable="false" />
+          <NavigationProperty Name="Zaspolenik" Relationship="Database.ZaspolenikPonuda" FromRole="Ponuda" ToRole="Zaspolenik" />
+          <NavigationProperty Name="StavkaPonude" Relationship="Database.PonudaStavkaPonude" FromRole="Ponuda" ToRole="StavkaPonude" />
+          <NavigationProperty Name="Klijent" Relationship="Database.KlijentPonuda" FromRole="Ponuda" ToRole="Klijent" />
+        </EntityType>
+        <Association Name="ZaspolenikPonuda">
+          <End Type="Database.Zaspolenik" Role="Zaspolenik" Multiplicity="1" />
+          <End Type="Database.Ponuda" Role="Ponuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Zaspolenik">
+              <PropertyRef Name="IdZaposlenik" />
+            </Principal>
+            <Dependent Role="Ponuda">
+              <PropertyRef Name="ZaposlenikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="StavkaPonude">
+          <Key>
+            <PropertyRef Name="IdStavkePonude" />
+          </Key>
+          <Property Name="IdStavkePonude" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PonudaId" Type="Int32" Nullable="false" />
+          <Property Name="UslugaId" Type="Int32" Nullable="false" />
+          <Property Name="Kolicina" Type="Decimal" Nullable="false" />
+          <NavigationProperty Name="Ponuda" Relationship="Database.PonudaStavkaPonude" FromRole="StavkaPonude" ToRole="Ponuda" />
+          <NavigationProperty Name="Usluga" Relationship="Database.UslugaStavkaPonude" FromRole="StavkaPonude" ToRole="Usluga" />
+        </EntityType>
+        <Association Name="PonudaStavkaPonude">
+          <End Type="Database.Ponuda" Role="Ponuda" Multiplicity="1" />
+          <End Type="Database.StavkaPonude" Role="StavkaPonude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ponuda">
+              <PropertyRef Name="IdPonuda" />
+            </Principal>
+            <Dependent Role="StavkaPonude">
+              <PropertyRef Name="PonudaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="UslugaStavkaPonude">
+          <End Type="Database.Usluga" Role="Usluga" Multiplicity="1" />
+          <End Type="Database.StavkaPonude" Role="StavkaPonude" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usluga">
+              <PropertyRef Name="IdUsluge" />
+            </Principal>
+            <Dependent Role="StavkaPonude">
+              <PropertyRef Name="UslugaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KlijentPonuda">
+          <End Type="Database.Klijent" Role="Klijent" Multiplicity="1" />
+          <End Type="Database.Ponuda" Role="Ponuda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klijent">
+              <PropertyRef Name="IdKlijent" />
+            </Principal>
+            <Dependent Role="Ponuda">
+              <PropertyRef Name="KlijentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DatabaseStoreContainer" CdmEntityContainer="DatabaseContainer">
+    <EntitySetMapping Name="JedinicaMjereSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.JedinicaMjere)">
+        <MappingFragment StoreEntitySet="JedinicaMjereSet">
+          <ScalarProperty Name="IdJedinicaMjere" ColumnName="IdJedinicaMjere" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="SkraceniNaziv" ColumnName="SkraceniNaziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterijalSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Materijal)">
+        <MappingFragment StoreEntitySet="MaterijalSet">
+          <ScalarProperty Name="IdMaterijal" ColumnName="IdMaterijal" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+          <ScalarProperty Name="JedinicaMjereId" ColumnName="JedinicaMjereId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UslugaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Usluga)">
+        <MappingFragment StoreEntitySet="UslugaSet">
+          <ScalarProperty Name="IdUsluge" ColumnName="IdUsluge" />
+          <ScalarProperty Name="ZaposlenikId" ColumnName="ZaposlenikId" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Cijena" ColumnName="Cijena" />
+          <ScalarProperty Name="DatumKreiranja" ColumnName="DatumKreiranja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StavkaUslugeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.StavkaUsluge)">
+        <MappingFragment StoreEntitySet="StavkaUslugeSet">
+          <ScalarProperty Name="IdStavkaUsluge" ColumnName="IdStavkaUsluge" />
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+          <ScalarProperty Name="MaterijalId" ColumnName="MaterijalId" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ZaspolenikSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Zaspolenik)">
+        <MappingFragment StoreEntitySet="ZaspolenikSet">
+          <ScalarProperty Name="IdZaposlenik" ColumnName="IdZaposlenik" />
+          <ScalarProperty Name="UlogaId" ColumnName="UlogaId" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Kontakt" ColumnName="Kontakt" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UlogaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Uloga)">
+        <MappingFragment StoreEntitySet="UlogaSet">
+          <ScalarProperty Name="IdUloga" ColumnName="IdUloga" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KlijentSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Klijent)">
+        <MappingFragment StoreEntitySet="KlijentSet">
+          <ScalarProperty Name="IdKlijent" ColumnName="IdKlijent" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="OIB" ColumnName="OIB" />
+          <ScalarProperty Name="Adresa" ColumnName="Adresa" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PonudaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.Ponuda)">
+        <MappingFragment StoreEntitySet="PonudaSet">
+          <ScalarProperty Name="IdPonuda" ColumnName="IdPonuda" />
+          <ScalarProperty Name="KlijentId" ColumnName="KlijentId" />
+          <ScalarProperty Name="ZaposlenikId" ColumnName="ZaposlenikId" />
+          <ScalarProperty Name="DatumIzdavanja" ColumnName="DatumIzdavanja" />
+          <ScalarProperty Name="Napomena" ColumnName="Napomena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StavkaPonudeSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Database.StavkaPonude)">
+        <MappingFragment StoreEntitySet="StavkaPonudeSet">
+          <ScalarProperty Name="IdStavkePonude" ColumnName="IdStavkePonude" />
+          <ScalarProperty Name="PonudaId" ColumnName="PonudaId" />
+          <ScalarProperty Name="UslugaId" ColumnName="UslugaId" />
+          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
